@@ -1,4 +1,3 @@
-<h2> List Class Room</h2>
 <table class="table table-active">
     <tr>
         <th>ClassRoomNo</th>
@@ -6,5 +5,19 @@
         <th>ClassRoomType</th>
         <th>NumOfStudent</th>
     </tr>
-    <tr *ngFor="let ClassRoom in classRooms"></tr>
+    <tr *ngFor="let room of classRooms">
+        <td>{{room.ClassRoomNo}}</td>
+        <td>{{room.ClassRoomName}}</td>
+        <td>{{room.ClassRoomType}}</td>
+        <td>{{room.ClassRoomCapacity}}</td>
+        <td>
+            <button class="btn btn-primary">
+                Update
+            </button>
+            <button class="btn btn-danger">
+                Delete
+            </button>
+
+        </td>
+    </tr>
 </table>
