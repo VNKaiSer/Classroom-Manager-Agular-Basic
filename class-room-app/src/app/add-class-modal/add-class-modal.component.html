@@ -1,0 +1,15 @@
+<div class="modal-content" style="background-color: #fff">
+    <form #form="ngForm" class="m-3">
+        <h1>Add Class</h1>
+        <input class="form-control mb-3" style="width: 100%" placeholder="Class code" [(ngModel)]="classRoom.ClassRoomNo" [ngModelOptions]="{standalone : true}">
+        <input class="form-control mb-3" style="width: 100%" placeholder="Class name" [(ngModel)]="classRoom.ClassRoomName" [ngModelOptions]="{standalone : true}">
+        <input type="number" class="form-control mb-3" style="width: 100%" placeholder="Capacity" [(ngModel)]="classRoom.ClassRoomCapacity" [ngModelOptions]="{standalone : true}">
+        <select [(ngModel)]="classRoom.ClassRoomType" [ngModelOptions]="{standalone : true}" class="form-select mb-3" style="width: 100%" aria-label="Select one">
+          <option value="Lab">Lab</option>
+          <option value="RoomStudy">RoomStudy </option>
+          <option value="ChemisstreeRoom">ChemisstreeRoom</option>
+        </select>
+        <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()" cdkFocusInitial>Save</button>
+    </form>
+</div>

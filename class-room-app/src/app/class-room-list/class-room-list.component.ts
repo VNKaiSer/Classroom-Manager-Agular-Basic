@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ClassRoom } from './class-room';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'hinv-class-room-list',
@@ -7,9 +8,17 @@ import { ClassRoom } from './class-room';
   styleUrls: ['./class-room-list.component.scss'],
 })
 export class ClassRoomListComponent implements OnInit {
+  @Input() classRooms!: ClassRoom[];
   constructor() {}
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.dataSource.data = this.classRooms;
   }
-  @Input() classRooms: ClassRoom[] = [];
+
+  displayedColumns: string[] = ['ClassRoomNo', 'ClassRoomName', 'ClassRoomType', 'ClassRoomCapacity', 'Action'];
+  dataSource = new MatTableDataSource<ClassRoom>(this.classRooms);
+
 }
+
+
+

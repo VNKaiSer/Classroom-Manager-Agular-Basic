@@ -1,23 +1,21 @@
-<table class="table table-active">
-    <tr>
-        <th>ClassRoomNo</th>
-        <th>ClassName</th>
-        <th>ClassRoomType</th>
-        <th>NumOfStudent</th>
-    </tr>
-    <tr *ngFor="let room of classRooms">
-        <td>{{room.ClassRoomNo}}</td>
-        <td>{{room.ClassRoomName}}</td>
-        <td>{{room.ClassRoomType}}</td>
-        <td>{{room.ClassRoomCapacity}}</td>
-        <td>
-            <button class="btn btn-primary">
-                Update
-            </button>
-            <button class="btn btn-danger">
-                Delete
-            </button>
-
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="column !== 'Action'; else actionButtons">
+                {{element[column]}}
+            </ng-container>
+            <ng-template #actionButtons>
+                <button mat-icon-button color="primary">
+                  <mat-icon>edit</mat-icon>
+              </button>
+                <button mat-icon-button color="warn">
+                  <mat-icon>delete</mat-icon>
+              </button>
+            </ng-template>
         </td>
-    </tr>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
